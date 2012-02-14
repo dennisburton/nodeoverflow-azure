@@ -1,5 +1,5 @@
 window.Overflow =
-  Models: {}
+	Models: {}
 	Collections: {}
 	Views: {}
 	Routers: {}
