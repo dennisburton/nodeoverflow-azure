@@ -4,15 +4,18 @@ class Overflow.Views.UserInput extends Backbone.View
 
 	el: $('#newQuestions')
 
-	loggedInTemplate: _.template('''you are logged in''')
+	loggedInTemplate: _.template('''<label for="newQuestion" id="questionPrompt"><%= userName %> wants to know...</label>
+		<textarea cols=20 rows=2 id="newQuestion" name="newQuestion"></textarea>
+		<a id='addItem'>Ask now!</a>''')
 
-	loggedOutTemplate: _.template('''you are logged out <a id="logIn">That's Me</a>''')
+	loggedOutTemplate: _.template('''<label id="logInPrompt">Your name:</label><input id="userName" type=text/><a id="logIn">That's me!</a>''')
 
 	events:
 		"click #logIn" : "login"
 
 	login: =>
-		@model.set({userName: "me"})
+		userName = $('#userName').val()
+		@model.set({userName: userName})
 
 	render: =>
 		if @model.isLoggedIn()

@@ -20,17 +20,19 @@
 
     UserInput.prototype.el = $('#newQuestions');
 
-    UserInput.prototype.loggedInTemplate = _.template('you are logged in');
+    UserInput.prototype.loggedInTemplate = _.template('<label for="newQuestion" id="questionPrompt"><%= userName %> wants to know...</label>\n<textarea cols=20 rows=2 id="newQuestion" name="newQuestion"></textarea>\n<a id=\'addItem\'>Ask now!</a>');
 
-    UserInput.prototype.loggedOutTemplate = _.template('you are logged out <a id="logIn">That\'s Me</a>');
+    UserInput.prototype.loggedOutTemplate = _.template('<label id="logInPrompt">Your name:</label><input id="userName" type=text/><a id="logIn">That\'s me!</a>');
 
     UserInput.prototype.events = {
       "click #logIn": "login"
     };
 
     UserInput.prototype.login = function() {
+      var userName;
+      userName = $('#userName').val();
       return this.model.set({
-        userName: "me"
+        userName: userName
       });
     };
 

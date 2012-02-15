@@ -1,0 +1,1 @@
+class Overflow.Models.Question extends Backbone.Model
