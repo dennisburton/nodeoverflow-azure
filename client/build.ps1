@@ -19,6 +19,12 @@ if( [IO.Directory]::Exists("c:\development\node\nodeoverflow\client\src\coffee\v
   Get-Content src\js\views.js >> overflow.js
 }
 
+if( [IO.Directory]::Exists("c:\development\node\nodeoverflow\client\src\coffee\routers") ) {
+  $routers = [string]::join(" ",(gci src\coffee\routers\*.coffee | foreach {$_.fullname}))
+  Invoke-Expression("coffee -j src\js\routers.js -c {0}" -f $routers)
+  Get-Content src\js\routers.js >> overflow.js
+}
+
 echo ' }); ' >> overflow.js
 
 Get-Content vendor\js\jquery-1.7.1.js > vendor.js
