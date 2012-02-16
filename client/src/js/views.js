@@ -10,6 +10,7 @@
     function UserInput() {
       this.render = __bind(this.render, this);
       this.login = __bind(this.login, this);
+      this.newQuestion = __bind(this.newQuestion, this);
       this.initialize = __bind(this.initialize, this);
       UserInput.__super__.constructor.apply(this, arguments);
     }
@@ -25,7 +26,21 @@
     UserInput.prototype.loggedOutTemplate = _.template('<label id="logInPrompt">Your name:</label><input id="userName" type=text/><a id="logIn">That\'s me!</a>');
 
     UserInput.prototype.events = {
-      "click #logIn": "login"
+      "click #logIn": "login",
+      "click #addItem": "newQuestion"
+    };
+
+    UserInput.prototype.newQuestion = function() {
+      var question, questionText, textArea;
+      textArea = $('#newQuestion');
+      questionText = textArea.val();
+      textArea.val("");
+      question = {
+        text: questionText,
+        userName: this.model.get('userName'),
+        votes: []
+      };
+      return Overflow.questions.create(question);
     };
 
     UserInput.prototype.login = function() {

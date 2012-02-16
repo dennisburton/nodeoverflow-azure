@@ -5,3 +5,4 @@ class Overflow.Routers.QuestionRouter extends Backbone.Router
 		@userInputView.render()
 
 Overflow.router = new Overflow.Routers.QuestionRouter()
+Overflow.questions = new Overflow.Collections.QuestionList()

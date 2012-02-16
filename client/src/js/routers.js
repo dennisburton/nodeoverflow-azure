@@ -26,4 +26,6 @@
 
   Overflow.router = new Overflow.Routers.QuestionRouter();
 
+  Overflow.questions = new Overflow.Collections.QuestionList();
+
 }).call(this);

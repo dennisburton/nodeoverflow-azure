@@ -12,6 +12,19 @@ class Overflow.Views.UserInput extends Backbone.View
 
 	events:
 		"click #logIn" : "login"
+		"click #addItem" : "newQuestion"
+
+	newQuestion: =>
+		textArea = $('#newQuestion')
+		questionText = textArea.val()
+		textArea.val("")
+
+		question =
+			text: questionText
+			userName: @model.get('userName')
+			votes: []
+
+		Overflow.questions.create(question)
 
 	login: =>
 		userName = $('#userName').val()
@@ -24,3 +37,13 @@ class Overflow.Views.UserInput extends Backbone.View
 			activeTemplate = @loggedOutTemplate
 		@el.html( activeTemplate( @model.toJSON() ) )
 		this
+
+
+
+
+
+
+
+
+
+
