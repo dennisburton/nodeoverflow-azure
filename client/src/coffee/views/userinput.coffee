@@ -4,7 +4,7 @@ class Overflow.Views.UserInput extends Backbone.View
 
 	el: $('#newQuestions')
 
-	loggedInTemplate: _.template('''<label for="newQuestion" id="questionPrompt"><%= userName %> wants to know...</label>
+	loggedInTemplate: _.template('''<label for="newQuestion" id="questionPrompt"><%- userName %> wants to know...</label>
 		<textarea cols=20 rows=2 id="newQuestion" name="newQuestion"></textarea>
 		<a id='addItem'>Ask now!</a>''')
 

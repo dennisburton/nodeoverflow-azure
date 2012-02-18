@@ -13,11 +13,13 @@
     }
 
     QuestionRouter.prototype.initialize = function(options) {
-      this.currentUser = new Overflow.Models.User;
+      Overflow.currentUser = new Overflow.Models.User;
       this.userInputView = new Overflow.Views.UserInput({
-        model: this.currentUser
+        model: Overflow.currentUser
       });
-      return this.userInputView.render();
+      this.userInputView.render();
+      Overflow.questions = new Overflow.Collections.QuestionList();
+      return this.questionListView = new Overflow.Views.QuestionListView();
     };
 
     return QuestionRouter;
@@ -25,7 +27,5 @@
   })(Backbone.Router);
 
   Overflow.router = new Overflow.Routers.QuestionRouter();
-
-  Overflow.questions = new Overflow.Collections.QuestionList();
 
 }).call(this);
