@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RoleModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="nodeworker" version="1.6.21103.1459" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
+  <Runtime protocolVersion="2011-03-08">
+    <Environment>
+      <Variable name="PORT">
+        <RoleInstanceValue xpath="/RoleEnvironment/CurrentInstance/Endpoints/Endpoint[@name='HttpIn']/@port" />
+      </Variable>
+      <Variable name="EMULATED">
+        <RoleInstanceValue xpath="/RoleEnvironment/Deployment/@emulated" />
+      </Variable>
+    </Environment>
+    <EntryPoint>
+      <ProgramEntryPoint commandLine="node.exe .\server.js" setReadyOnProcessStart="true" />
+    </EntryPoint>
+  </Runtime>
+</RoleModel>
