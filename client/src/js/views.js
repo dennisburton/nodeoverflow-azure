@@ -24,7 +24,7 @@
 
     QuestionView.prototype.className = "question";
 
-    QuestionView.prototype.template = _.template('<div class=questionStatus>\n  <div class="voteup <%=voteUpClass%>">&nbsp;</div>\n  <div class=votecount><%= tally %></div>\n  <div class="votedown <%=voteDownClass%>">&nbsp;</div>\n</div>\n<div class=questionText>\n  <p><%= text %></p>\n  <div class="questionAuthor">From: <%= userName %></div>\n</div>');
+    QuestionView.prototype.template = _.template('<div class=questionStatus>\n  <div class="voteup <%=voteUpClass%>">&nbsp;</div>\n  <div class=votecount><%= tally %></div>\n  <div class="votedown <%=voteDownClass%>">&nbsp;</div>\n</div>\n<div class=questionText>\n  <p><%- text %></p>\n  <div class="questionAuthor">From: <%- userName %></div>\n</div>');
 
     QuestionView.prototype.events = {
       "click .voteup": 'upVote',
@@ -52,7 +52,7 @@
 
     QuestionView.prototype.setVote = function(voteType) {
       var questionId, userName, vote, votes;
-      userName = this.currentUser.get('userName');
+      userName = currentUser.get('userName');
       questionId = this.model.id;
       vote = {
         voteType: voteType,
@@ -66,7 +66,8 @@
       }, {
         silent: true
       });
-      return this.render();
+      this.render();
+      return Backbone.socket.emit('vote:add', vote);
     };
 
     return QuestionView;
@@ -122,7 +123,7 @@
 
     UserInput.prototype.el = $('#newQuestions');
 
-    UserInput.prototype.loggedInTemplate = _.template('<label for="newQuestion" id="questionPrompt"><%= userName %> wants to know...</label>\n<textarea cols=20 rows=2 id="newQuestion" name="newQuestion"></textarea>\n<a id=\'addItem\'>Ask now!</a>');
+    UserInput.prototype.loggedInTemplate = _.template('<label for="newQuestion" id="questionPrompt"><%- userName %> wants to know...</label>\n<textarea cols=20 rows=2 id="newQuestion" name="newQuestion"></textarea>\n<a id=\'addItem\'>Ask now!</a>');
 
     UserInput.prototype.loggedOutTemplate = _.template('<label id="logInPrompt">Your name:</label><input id="userName" type=text/><a id="logIn">That\'s me!</a>');
 

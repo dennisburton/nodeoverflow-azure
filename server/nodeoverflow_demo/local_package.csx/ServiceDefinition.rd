@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<serviceModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="nodeoverflow_demo" generation="1" functional="0" release="0" Id="bfc6d6e1-3ed6-465b-a009-356df7240d24" dslVersion="1.2.0.0" xmlns="http://schemas.microsoft.com/dsltools/RDSM">
+<serviceModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="nodeoverflow_demo" generation="1" functional="0" release="0" Id="ca7e3353-cbaa-44cb-8718-fa6e1fff3f56" dslVersion="1.2.0.0" xmlns="http://schemas.microsoft.com/dsltools/RDSM">
   <groups>
     <group name="nodeoverflow_demoGroup" generation="1" functional="0" release="0">
       <componentports>
@@ -57,9 +57,9 @@
     </group>
   </groups>
   <implements>
-    <implementation Id="7c9662f4-10df-47a7-b23b-4e44632ca521" ref="Microsoft.RedDog.Contract\ServiceContract\nodeoverflow_demoContract@ServiceDefinition">
+    <implementation Id="0888ccd9-e87c-4a5d-940b-e2af80d532c2" ref="Microsoft.RedDog.Contract\ServiceContract\nodeoverflow_demoContract@ServiceDefinition">
       <interfacereferences>
-        <interfaceReference Id="7e0ba7f9-0384-4701-a662-a07f99af8e40" ref="Microsoft.RedDog.Contract\Interface\nodeworker:HttpIn@ServiceDefinition">
+        <interfaceReference Id="eb9c508b-56af-4aee-ba50-5c0c136bbbc4" ref="Microsoft.RedDog.Contract\Interface\nodeworker:HttpIn@ServiceDefinition">
           <inPort>
             <inPortMoniker name="/nodeoverflow_demo/nodeoverflow_demoGroup/nodeworker:HttpIn" />
           </inPort>

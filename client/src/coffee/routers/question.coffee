@@ -7,3 +7,10 @@ class Overflow.Routers.QuestionRouter extends Backbone.Router
 		@questionListView = new Overflow.Views.QuestionListView()
 
 Overflow.router = new Overflow.Routers.QuestionRouter()
+
+Backbone.socket.on "questions:updated", (data) ->
+	question = Overflow.Questions.get(data.id)
+	if(question)
+		question.set({'votes':data.votes})
+	else
+		Overflow.Questions.add(data)

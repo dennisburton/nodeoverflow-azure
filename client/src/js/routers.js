@@ -28,4 +28,16 @@
 
   Overflow.router = new Overflow.Routers.QuestionRouter();
 
+  Backbone.socket.on("questions:updated", function(data) {
+    var question;
+    question = Overflow.Questions.get(data.id);
+    if (question) {
+      return question.set({
+        'votes': data.votes
+      });
+    } else {
+      return Overflow.Questions.add(data);
+    }
+  });
+
 }).call(this);

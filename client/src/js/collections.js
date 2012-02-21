@@ -12,7 +12,7 @@
 
     QuestionList.prototype.model = Overflow.Models.Question;
 
-    QuestionList.prototype.localStorage = new Store("questions");
+    QuestionList.prototype.url = "questions";
 
     return QuestionList;
 
